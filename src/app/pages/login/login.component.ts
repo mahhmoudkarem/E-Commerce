@@ -27,7 +27,7 @@ export class LoginComponent {
           console.log(res)
           this.loginForm.reset();
           localStorage.setItem('token' , res.token)
-          
+            
           this.router.navigate(['/home'])
 
         },
