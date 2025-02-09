@@ -1,1 +1,153 @@
-<p>home works!</p>
+<section  id="banner" class="pb-[90px] border-b-[1px] border-gray-300">
+        <div class="parent md:flex sm:flex-col md:flex-row    ">
+         
+            <div class="pt-[90px] pe-14 categories sm:border-r-[1px] sm:border-gray-300">
+                <ul class="flex flex-col">
+                    @for (category of categories; track category._id) {
+                        <li class="mb-4 cursor-pointer hover:text-red-800 transition-all " >{{category.name}}</li>
+                    }
+                </ul>
+            </div>
+
+            <div class="carausal hidden sm:block   h-[100%] w-full pt-[90px] p-10">
+                
+
+<div id="indicators-carousel" class="relative w-full" data-carousel="static">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+            <img src="images/slider-image-1.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images/slider-image-2.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images/slider-image-3.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images/slider-2.jpeg" class="absolute block h-[100%] w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="images/slider-image-1.jpegw-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+            </div>
+
+
+        </div>
+</section>
+
+<section class="py-[90px] border-b-[1px] border-gray-300 " id="products">
+    <div class="title mb-12">
+        <p class="mb-6 font-semibold text-red-800 ps-10 relative">Our Products </p>
+        <h2 class="font-semibold text-4xl">Explore Our Products</h2>
+    </div>
+    <div class="products grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 gap-[30px] ">
+        @for (product of products.slice(16,24); track product.id) {
+        <div class="card rounded-lg shadow-sm overflow-hidden cursor-pointer p-2 ">
+            <div class="card-img rounded-lg  relative">
+                <div class="icons absolute right-[1px] top-2 flex flex-col">
+                    <span class="py-1 px-2 text-black rounded-full hover:text-white transition-all bg-slate-400"><i
+                            class="fa-regular fa-heart"></i></span><br>
+                    <span class="py-1 px-2 text-black rounded-full hover:text-white transition-all bg-slate-400"><i
+                            class="fa-regular fa-eye"></i></span>
+                </div>
+                <img class="w-full  mx-auto" [src]="product.images[0]" alt="">
+                <div class="layer bg-black text-center text-white p-1 font-medium">Add To Cart</div>
+            </div>
+            <div class="card-body mt-3">
+                <h2 class="font-medium">{{product.title.split(' ',2).join('')}}</h2>
+                <div class="card-desc w-full flex justify-between">
+                    <div>
+                        <span class="text-red-800 font-medium">{{product.price}}$ </span>
+                        <span class="ms-2 font-semibold size-[14px quantity]">({{product.quantity}})</span>
+                    </div>
+                    <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i>{{products[0].ratingsAverage}}</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="catecory-btn mt-8 text-center">
+        <button
+            class="px-3 py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white">View
+            All Products</button>
+    </div>
+</section>
+
+
+<section id="categories" class="py-[90px] border-b-[1px] border-gray-300">
+        <div class="title mb-12">
+            <p class="mb-6 font-semibold text-red-800 ps-10 relative">Categories</p>
+            <h2 class="font-semibold text-4xl">Browse By Category</h2>
+        </div>
+        <div class="parent">
+            <div class="grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[30px]">
+ 
+                @for (category of categories.slice(0,6) ; track $index) {
+                    <div class="category text-center cursor-pointer py-7 px-8 border-[2px] border-gray-300 hover:bg-red-800 hover:text-white transition-all">
+                        <span class="text-5xl"><i [class]="iconCategory[$index]"></i></span>
+                        <p class="mt-4">{{category.name.split(' ',1).join('')}}</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+</section>
+
+
+<section id="blog" class="py-[90px]">
+    <div class="title mb-12">
+        <p class="mb-6 font-semibold text-red-800 ps-10 relative">Blog</p>
+        <h2 class="font-semibold text-4xl">Read Our Blog</h2>
+    </div>
+
+    <div class="parent">
+        <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 grid-cols-1 gap-[20px] p-16">
+            <div class="child text-center mb-[12px] sm:mb-[12px] lg:mb-0">
+                <span class="p-3  rounded-full text-white bg-black border-[5px] border-gray-300 text-2xl "><i class="fa-solid fa-truck-fast"></i></span>
+                <h4 class="font-semibold text-[20px] mt-8">FREE AND FAST DELIVERY</h4>
+                <p class="text-[14px]">Free delivery for all orders over $140</p>
+            </div>
+            <div class="child text-center mb-[12px] sm:mb-[12px] lg:mb-0">
+                <span class="py-3 px-4  rounded-full text-white bg-black border-[5px] border-gray-300 text-2xl "><i class="fa-solid fa-headphones"></i></span>
+                <h4 class="font-semibold text-[20px] mt-8">FREE AND FAST DELIVERY</h4>
+                <p class="text-[14px]">Free delivery for all orders over $140</p>
+            </div>
+            <div class="child text-center mb-[12px] sm:mb-[12px] lg:mb-0">
+                <span class="py-3 px-4  rounded-full text-white bg-black border-[5px] border-gray-300 text-2xl "><i class="fa-solid fa-shield-halved"></i></span>
+                <h4 class="font-semibold text-[20px] mt-8">FREE AND FAST DELIVERY</h4>
+                <p class="text-[14px]">Free delivery for all orders over $140</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,1 +1,44 @@
-<p>login works!</p>
+<section id="register w-full ">
+    <div class="parent w-full sm:flex sm:flex-row flex-col flex-wrap p-5 sm:p-0">
+
+        <div class="register-img w-full sm:w-[65%] p-5  sm:p-0">
+            <img class="w-100% h-[80%]" src="images/Big_phone_with_cart.jpg" alt="">
+        </div>
+
+
+        <div class="register-forms w-full sm:w-[35%] p-5  sm:p-0 ">
+            <div class="title">
+                <h3 class="font-[500] text-4xl mb-2">Log in to Exclusive</h3>
+                <p>Enter your details below</p>
+            </div>
+
+            <form class="form mt-5 w-full " [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                <input formControlName="email" class="transition-all w-full bg-transparent  mb-7 font-semibold" type="email"
+                    placeholder="E-mail">
+                <input formControlName="password" class="transition-all w-full bg-transparent  mb-7 font-semibold" type="password"
+                    placeholder="Password">
+
+                    @if (err) {
+                        <p class="text-red-800 text-center mb-3">Email or password is incorrect</p>
+                    }
+
+                        <button
+                        type="submit"
+                            class="px-12 mt-4   py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white">
+                            Login @if (isLoading) {
+                                <span class="ms-2"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                            }</button> <span class="text-red-800 cursor-pointer ms-8 ">Forget passowrd ?</span>
+            </form>
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+</section>

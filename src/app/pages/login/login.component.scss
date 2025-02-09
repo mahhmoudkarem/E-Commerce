@@ -1,0 +1,12 @@
+
+input{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #d1d5db;
+    
+    &:focus{
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #991b1b;
+    }
+}
