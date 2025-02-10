@@ -43,7 +43,7 @@
             }
             @else {
                 <li>
-                    <a role="button" routerLinkActive="text-red-800" routerLink="/login"  class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Logout</a>
+                    <a role="button" routerLinkActive="text-red-800" (click)="authService.logout()" class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Logout</a>
                 </li>
             }
             @if (isLogin()) {

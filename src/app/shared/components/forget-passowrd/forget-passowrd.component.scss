@@ -1,0 +1,30 @@
+.title{
+    p::after{
+        
+            position: absolute;
+            content: '';
+            height: 40px;
+            width: 20px;
+            background-color: #991b1b;
+            left: 0;
+            bottom: 0px;
+            border-radius: 5px;
+    }
+}
+
+input{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #d1d5db;
+    
+    &:focus{
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #991b1b;
+        outline-offset: 0px;
+        box-shadow: none;}
+}
+
+ul li{
+    list-style: none;
+}
