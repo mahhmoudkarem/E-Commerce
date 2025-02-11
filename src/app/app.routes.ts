@@ -12,8 +12,8 @@ export const routes: Routes = [
         path:'',
         component:AuthLayoutComponent,
         children:[
-            {path:'login' , component:LoginComponent , title:'Login' ,},
-            {path:'register' ,component:RegisterComponent , title:'Register' , },
+            {path:'login' , component:LoginComponent , title:'Login' ,canActivate:[logedGuard]},
+            {path:'register' ,component:RegisterComponent , title:'Register' , canActivate:[logedGuard] },
             {path:'forget-password' , loadComponent:()=>import('./shared/components/forget-passowrd/forget-passowrd.component').then((c)=>c.ForgetPassowrdComponent) , title:'Reset Password'},
         ]
     },
@@ -25,7 +25,7 @@ export const routes: Routes = [
             {path:'home' , loadComponent:()=>import('./pages/home/home.component').then((c)=>c.HomeComponent) , title:'Home' , canActivate:[ authGuard],},
             {path:'cart' , loadComponent:()=>import('./pages/cart/cart.component').then((c)=>c.CartComponent) , title:'Cart', canActivate:[ authGuard],},
             {path:'products' , loadComponent:()=>import('./pages/products/products.component').then((c)=>c.ProductsComponent) , title:'Products' , canActivate:[ authGuard],},
-            {path:'brands' , loadComponent:()=>import('./pages/brands/brands.component').then((c)=>c.BrandsComponent) , title:'Brands'},
+            {path:'brands' , loadComponent:()=>import('./pages/brands/brands.component').then((c)=>c.BrandsComponent) , title:'Brands', canActivate:[ authGuard],},
             {path:'category' , loadComponent:()=>import('./pages/categories/categories.component').then((c)=>c.CategoriesComponent) , title:'Categories', canActivate:[ authGuard],},
             {path:'checkout' , loadComponent:()=>import('./pages/checkout/checkout.component').then((c)=>c.CheckoutComponent) , title:'Checkout', canActivate:[ authGuard],},
             {path:'details/:id' , loadComponent:()=>import('./pages/details/details.component').then((c)=>c.DetailsComponent) , title:'Details', canActivate:[ authGuard],},
