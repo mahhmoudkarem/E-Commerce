@@ -1,1 +1,46 @@
-<p>products works!</p>
+<section class="py-[90px] border-b-[1px] border-gray-300 " id="products">
+    <div class="title mb-12">
+        <p class="mb-6 font-semibold text-red-800 ps-10 relative">Our Products </p>
+        <h2 class="font-semibold text-4xl">Explore Our Products</h2>
+    </div>
+    <div class="w-full text-center mb-8">
+        <input [(ngModel)]="search" placeholder="Search..." class="px-3 py-2 bg-white placeholder:text-gray-400 border-[1px] border-gray-400 w-1/2 rounded-md focus:border-red-800 "  type="search" >
+    </div>
+    <div class="products grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 gap-[30px] ">
+        @for (product of products|search : search; track product.id) {
+        <div class="card rounded-lg shadow-sm overflow-hidden cursor-pointer p-2 ">
+            <div class="card-img rounded-lg  relative">
+                <div class="icons absolute right-[1px] top-2 flex flex-col">
+                    @if (!wishListData.includes(product.id)) {
+                        <span class="py-1 px-2 text-black rounded-full hover:text-red-800 transition-all bg-slate-400"><i
+                            (click)="addProductToWishList(product.id)"  class="fa-regular fa-heart"  
+                            
+                            ></i></span>
+                    }
+                    @if (wishListData.includes(product.id)) {
+                        <span class="py-1 px-2 text-black rounded-full hover:text-red-800 transition-all bg-slate-400"><i
+                            (click)="removeproductFromWishList(product.id)"  class="fa-solid fa-heart"  
+                            
+                            ></i></span>
+                    }<br>
+                    <span class="py-1 px-2 text-black rounded-full hover:text-white transition-all bg-slate-400"><i
+                        [routerLink]="['/details',product._id]"    class="fa-regular fa-eye"></i></span>
+                </div>
+                <img [routerLink]="['/details',product._id]" class="w-full  mx-auto" [src]="product.images[0]" alt="">
+                <div role="button" (click)="addToCart(product.id)" class="layer bg-black text-center text-white p-1 font-medium z-50"  >Add To Cart</div>
+            </div>
+            <div [routerLink]="['/details',product._id]" class="card-body mt-3">
+                <h2 class="font-medium">{{product.title.split(' ',2).join('')}}</h2>
+                <div class="card-desc w-full flex justify-between">
+                    <div>
+                        <span class="text-red-800 font-medium">{{product.price}} $ </span>
+                        <span class="ms-2 font-semibold size-[14px quantity]">({{product.quantity}})</span>
+                    </div>
+                    <span><i class="fa-solid fa-star" style="color: #FFD43B;"></i>{{products[0].ratingsAverage}}</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+</section>

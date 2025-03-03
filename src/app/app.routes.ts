@@ -27,8 +27,10 @@ export const routes: Routes = [
             {path:'products' , loadComponent:()=>import('./pages/products/products.component').then((c)=>c.ProductsComponent) , title:'Products' , canActivate:[ authGuard],},
             {path:'brands' , loadComponent:()=>import('./pages/brands/brands.component').then((c)=>c.BrandsComponent) , title:'Brands', canActivate:[ authGuard],},
             {path:'category' , loadComponent:()=>import('./pages/categories/categories.component').then((c)=>c.CategoriesComponent) , title:'Categories', canActivate:[ authGuard],},
-            {path:'checkout' , loadComponent:()=>import('./pages/checkout/checkout.component').then((c)=>c.CheckoutComponent) , title:'Checkout', canActivate:[ authGuard],},
+            {path:'checkout/:id' , loadComponent:()=>import('./pages/checkout/checkout.component').then((c)=>c.CheckoutComponent) , title:'Checkout', canActivate:[ authGuard],},
             {path:'details/:id' , loadComponent:()=>import('./pages/details/details.component').then((c)=>c.DetailsComponent) , title:'Details', canActivate:[ authGuard],},
+            {path:'wishlist' , loadComponent:()=>import('./pages/wishlist/wishlist.component').then((c)=>c.WishlistComponent) , title:'Wishlist', canActivate:[ authGuard],},
+            {path:'**' , loadComponent:()=>import('./pages/notfound/notfound.component').then((c)=>c.NotfoundComponent) , title:'Not Found'},
         ]
     }    ,
     {path:'**' , loadComponent:()=>import('./pages/notfound/notfound.component').then((c)=>c.NotfoundComponent) , title:'Not Found'}

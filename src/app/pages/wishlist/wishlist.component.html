@@ -1,0 +1,57 @@
+<section class="py-[90px]" id="wishlist">
+    @if (wishListProducts().length > 0) {
+        <div class="title mb-12">
+            <p class="mb-6 font-semibold text-red-800 ps-10 relative">Wishlist</p>
+            <h2 class="font-semibold text-4xl">Your Wishlist</h2>
+        </div>
+        <div class="w-full flex justify-between font-medium text-xl rounded-md shadow-lg p-6">
+            <p>Wishlist Count :</p>
+            <span>{{wishListCount}}</span>
+        </div>
+        <div class=" w-full p-12 rounded-md shadow-lg  ">
+                @for (item of wishListProducts(); track item._id) {
+    
+                    <div class="flex my-8 items-center">
+                        <div>
+                            <img class="w-[170px] me-8 object-contain" src="{{item.imageCover}}" alt="">
+                        </div>
+            
+            
+                        <div>
+                            <h3>{{item.title}}</h3>
+                            <p class="mb-2"><span><i class="fa-solid fa-star me-1" style="color: #FFD43B;"></i></span>{{item.ratingsAverage}}</p>
+                            <span class="mb-2 ms-3 font-normal text-[14px] text-gray-400 pe-4 border-e-[1px] border-gray-400">({{item.ratingsQuantity}} Reviews)</span>
+                            <span class="text-[#00FF66] ms-3 font-normal text-[14px]">In Stock</span>
+                            <h4 class="text-2xl mt-2 font-normal">{{item.price}}$</h4>
+                            <p class="text-[14px]   mt-2 font-normal">{{item.description.split(' ',15).join(' ')}}.</p>
+                            <div>
+                                <button (click)="addToCart(item._id)" class="px-3 mt-3 py-1 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white">Add To Cart</button>&nbsp;
+                                <button (click)="removeFromWishList(item._id)" class="px-3 ms-3 mt-3 py-1 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white ">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+    
+    
+    
+    
+    
+                }
+            </div>
+    
+            <div class="flex justify-between w-full mt-5">
+                <button routerLink="/home" class="px-5 py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white"><i class="fa-solid fa-arrow-left"></i> Return To Shop</button>
+                <button (click)="clearWishList()" class="px-5 py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white">Clear Wishlist</button>
+            </div>
+    }@else {
+        <div class="title mb-12">
+            <p class="mb-6 font-semibold text-red-800 ps-10 relative">Wishlist</p>
+            <h2 class="font-semibold text-4xl">Your Wishlist Is Empty</h2>
+        </div>
+        <div class="flex justify-between w-full mt-5">
+            <button routerLink="/home" class="px-5 py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white"><i class="fa-solid fa-arrow-left"></i> Return To Shop</button>
+        </div>
+    }
+    
+</section>

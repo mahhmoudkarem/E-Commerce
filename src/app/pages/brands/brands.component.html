@@ -1,1 +1,13 @@
-<p>brands works!</p>
+<section id="categories" class="py-[50px] md:py-[90px] ">
+    <div class="title mb-12">
+        <p class="mb-6 font-semibold text-red-800 ps-10 relative">Brands</p>
+        <h2 class="font-semibold text-4xl">Browse By Brands</h2>
+    </div>
+    <div class="w-full flex flex-wrap ">
+        @for (brd of brand(); track brd._id) {
+            <div class="flex my-8 mx-2 flex-col w-full hover:scale-110 transition-all md:w-[30%] lg:w-[23%] items-center p-[12px] rounded-md shadow-lg  ">
+                <img class="w-[100px] h-[150px] object-contain" src="{{brd.image}}" alt="">
+            </div>
+        }
+    </div>
+</section>

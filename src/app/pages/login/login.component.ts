@@ -1,10 +1,11 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject } from '@angular/core';
 import {ReactiveFormsModule ,FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms'
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule,RouterLink],
+  imports: [ReactiveFormsModule,RouterLink , TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

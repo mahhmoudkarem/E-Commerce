@@ -33,27 +33,39 @@
         }
         <ul class=" ms-auto  capitalize  flex flex-col p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row md:space-x-6 rtl:space-x-reverse md:mt-0 md:border-0   ">
 
-            @if (!isLogin()) {
-                <li>
-                    <a role="button" routerLinkActive="text-red-800" routerLink="/login"  class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Login</a>
-                </li>
-                <li>
-                    <a role="button" routerLinkActive="text-red-800" routerLink="/register"  class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Register</a>
-                </li>
-            }
-            @else {
-                <li>
-                    <a role="button" routerLinkActive="text-red-800" (click)="authService.logout()" class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Logout</a>
-                </li>
-            }
+
             @if (isLogin()) {
               <li>
-                <a role="button" routerLinkActive="text-red-800" routerLink="/cart" title="Cart" aria-label="Cart" class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 "><i class="fa-solid fa-cart-shopping"></i></a>
+                <div class="relative">
+                  <span class="relative inline-block">
+                    <a role="button" routerLinkActive="text-red-800" routerLink="/cart" title="Cart" aria-label="Cart" class="block py-2 px-3 text-[20px] rounded-sm    md:border-0 md:hover:text-red-800 md:p-0  "><i class="fa-solid fa-cart-shopping"></i></a>
+                    <span class="bg-red-800 text-white absolute top-[-8px] right-[-8px] rounded-lg w-5 h-5 flex items-center justify-center text-[10px] ">{{countNumber()}}</span>
+                  </span>
+                </div>
               </li>
               <li>
-                <a role="button" routerLinkActive="text-red-800" routerLink="/profile"  class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 "><i class="fa-solid fa-user-large"></i></a>
+                <div class="relative">
+                  <span class="relative inline-block">
+                    <a role="button" routerLinkActive="text-red-800" routerLink="/wishlist" title="Wishlist" aria-label="Wishlist" class="block py-2 px-3 text-[20px] rounded-sm    md:border-0 md:hover:text-red-800 md:p-0  "><i class="fa-regular fa-heart"></i></a>
+                    <span class="bg-red-800 text-white absolute top-[-8px] right-[-8px] rounded-lg w-5 h-5 flex items-center justify-center text-[10px] ">{{wishListCount()}}</span>
+                  </span>
+                </div>
               </li>
+            
             }
+            @if (!isLogin()) {
+              <li>
+                  <a role="button" routerLinkActive="text-red-800" routerLink="/login"  class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Login</a>
+              </li>
+              <li>
+                  <a role="button" routerLinkActive="text-red-800" routerLink="/register"  class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Register</a>
+              </li>
+          }
+          @else {
+              <li>
+                  <a role="button" routerLinkActive="text-red-800" (click)="authService.logout()" class="block py-2 px-3  rounded-sm   md:border-0 md:hover:text-red-800 md:p-0 ">Logout</a>
+              </li>
+          }
 
 
         </ul>

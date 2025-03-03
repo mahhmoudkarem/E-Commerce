@@ -1,1 +1,94 @@
-<p>cart works!</p>
+@if (isFull) {
+    <section id="cart" class="md:py-[90px] py-[50px]">
+        <div class="title mb-12">
+            <p class="mb-6 font-semibold text-red-800 ps-10 relative">Cart</p>
+            <h2 class="font-semibold text-4xl">Your Cart Items</h2>
+        </div>
+    
+    
+    
+    
+        <div class="table-title flex justify-between mb-6 p-6 shadow-md font-normal ">
+            <span>Product</span>
+            <span>Price</span>
+            <span>Quantity</span>
+            <span>Subtotal</span>
+            <span>Remove</span>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+        @for (item of cartDetails.products ; track item.product._id) {
+            <div class="table-items  mb-6 px-6 py-2 shadow-md font-normal ">
+                <div class="flex justify-between items-center" >
+                    <span >
+                        <img class="w-[60px]" [src]="item.product.imageCover" alt="">
+                    </span>
+                    <span >{{item.price |currency}}</span>
+                    <span class="flex items-center border-[1px] rounded-lg border-black py-1 px-2">
+                        {{item.count}}
+                        <span class="flex flex-col ms-2">
+                            <i (click)="increment(item.product._id , item.count + 1)" class="fa-solid fa-angle-up cursor-pointer hover:text-red-800"></i>
+                            <i (click)="decrement(item.product._id , item.count - 1)" class="fa-solid fa-angle-down cursor-pointer hover:text-red-800 "></i>
+                        </span>
+                    </span>
+                    <span>{{item.price * item.count |currency }} </span>
+                    <span (click)="deleteItem(item.product._id)" class="text-red-800 cursor-pointer  px-4 py-3 border-[1px] rounded-lg border-red-800 me-1"><i class="fa-solid fa-trash"></i></span>
+                </div>
+                <p class="mt-2 text-xs">{{item.product.title.split(' ',2).join('')}}</p>
+            </div>
+        }
+    
+    
+    
+    
+    
+    
+        <div class="w-full text-center mt-3 flex flex-col md:flex-row justify-between ">
+            <button routerLink="/home" class="px-5 py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white"><i class="fa-solid fa-arrow-left"></i>  Return To Shop</button>
+            <button (click)="clearCart()" class=" mt-3 md:mt-0 px-5 py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white">Clear Cart</button>
+        </div>
+
+
+
+        <div id="checkOut" class="flex flex-row-reverse">
+            
+
+        <div  class="mt-5 border-[2px] border-black rounded-md p-5 inline-block">
+
+            <h4 class="font-medium text-xl mb-6">Cart Total</h4>
+
+            <p class="pb-4 border-b-[1px] border-gray-400">Subtotal: <span class="ms-48">{{cartDetails.totalCartPrice |currency}} </span></p>
+            <p class="pb-4 mt-4 border-b-[1px] border-gray-400">Shipping: <span class="ms-48">Free</span></p>
+            <p class="pb-4 mt-4 ">Total : <span class="ms-[214px]">{{cartDetails.totalCartPrice | currency}} </span></p>
+
+
+<div class="w-full text-center">
+    <button [routerLink]="['/checkout' , cartDetails._id]" class="  mt-2 px-5 py-2 border-[2px] rounded-lg bg-red-800 border-red-800 hover:bg-red-700 hover:border-red-700 transition-all text-white">Procees to checkout</button>
+
+</div>
+
+        </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </section>
+}@else {
+    <section id="cart" class="md:py-[90px] py-[50px] h-[70vh]">
+        <div class="title mb-12">
+            <p class="mb-6 font-semibold text-red-800 ps-10 relative">Cart</p>
+            <h2 class="font-semibold text-4xl">Your Cart Is Empty</h2>
+        </div>
+    </section>
+}
